@@ -1,0 +1,19 @@
+{
+  "rewrites": [
+    {
+      "source": "/",
+      "has": [{ "type": "host", "value": "jjmaraba.agenciadnegocios.com" }],
+      "destination": "/maraba.html"
+    },
+    {
+      "source": "/",
+      "has": [{ "type": "host", "value": "jjananindeua.agenciadnegocios.com" }],
+      "destination": "/ananindeua.html"
+    },
+    {
+      "source": "/",
+      "has": [{ "type": "host", "value": "jjparauapebas.agenciadnegocios.com" }],
+      "destination": "/parauapebas.html"
+    }
+  ]
+}
