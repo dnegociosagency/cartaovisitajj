@@ -25,7 +25,7 @@ qualquer domínio que não tenha regra própria.
     parauapebas.html   /
     style.css          estilos de TODAS as páginas (as 3 usam as mesmas 33 classes)
     vercel.json        regras de subdomínio
-    jj_moto_pecas_*.png  logo compartilhada
+    Logo_branca_com_traco_fundo_transparente.png   logo compartilhada
 
 Repositório único de propósito: as três cidades compartilham 100% do CSS e
 a logo. Separar em repositórios distintos triplicaria esses arquivos e faria

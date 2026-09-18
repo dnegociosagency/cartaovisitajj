@@ -73,9 +73,9 @@ body {
 }
 
 .logo-container {
-    width: 180px;
-    margin-bottom: 20px;
-    filter: drop-shadow(0 0 20px rgba(255,255,255,0.1));
+    width: min(560px, 88%);
+    margin-bottom: 28px;
+    filter: drop-shadow(0 0 28px rgba(255,255,255,0.18));
 }
 
 .logo {
