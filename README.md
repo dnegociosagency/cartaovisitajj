@@ -58,7 +58,6 @@ domínio já verificado não o derruba — mas nunca configure dois em paralelo.
 
 ## Pendências
 
-- Telefones e WhatsApp são placeholders (`5591999999999`, `5594999999999`)
 - Links entre cidades são relativos: navegar a partir de um subdomínio
   mantém o subdomínio de origem na URL
 
