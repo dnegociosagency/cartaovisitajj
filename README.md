@@ -14,12 +14,12 @@ e publicado automaticamente a cada push na branch `main`.
 O mapeamento é feito por `rewrites` em `vercel.json`, baseado no host da
 requisição. A URL não muda: o visitante vê o domínio limpo, sem `.html`.
 
-O hub (`index.html`, menu "Escolha sua Cidade") é servido na raiz de
+O hub (`hub.html`, menu "Escolha sua Cidade") é servido na raiz de
 qualquer domínio que não tenha regra própria.
 
 ## Arquivos
 
-    index.html         hub com o menu de cidades
+    hub.html           hub com o menu de cidades (NAO pode se chamar index.html)
     maraba.html        \
     ananindeua.html     >  mesmo template, dados de loja diferentes
     parauapebas.html   /
@@ -61,3 +61,17 @@ domínio já verificado não o derruba — mas nunca configure dois em paralelo.
 - Telefones e WhatsApp são placeholders (`5591999999999`, `5594999999999`)
 - Links entre cidades são relativos: navegar a partir de um subdomínio
   mantém o subdomínio de origem na URL
+
+### Por que o hub se chama `hub.html` e não `index.html`
+
+Na Vercel, `rewrites` são avaliados **depois** do sistema de arquivos. Se
+existir um `index.html`, ele responde em `/` e a regra de rewrite nunca
+chega a ser consultada — todos os subdomínios servem o hub.
+
+Por isso o hub se chama `hub.html` e `/` é resolvido por uma regra de
+fallback no fim da lista. **Não recrie um `index.html` na raiz**: isso
+quebra silenciosamente os três subdomínios de uma vez.
+
+Pelo mesmo motivo, o botão "Voltar ao Menu Principal" aponta para
+`/hub.html` e não para `/` — num subdomínio de cidade, `/` cairia na
+própria cidade.
