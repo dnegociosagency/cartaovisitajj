@@ -3,19 +3,32 @@
 Site estático com um hub e uma página por cidade, hospedado na Vercel
 e publicado automaticamente a cada push na branch `main`.
 
-## Subdomínio → página
+## Endereços
 
-| Subdomínio | Serve | Status |
-|---|---|---|
-| `jjmaraba.agenciadnegocios.com` | `maraba.html` | ativo |
-| `jjananindeua.agenciadnegocios.com` | `ananindeua.html` | pendente |
-| `jjparauapebas.agenciadnegocios.com` | `parauapebas.html` | pendente |
+O acesso principal é por **um domínio único**, com uma cidade por caminho:
 
-O mapeamento é feito por `rewrites` em `vercel.json`, baseado no host da
-requisição. A URL não muda: o visitante vê o domínio limpo, sem `.html`.
+| URL | Serve |
+|---|---|
+| `jjcartaodevisitas.agenciadnegocios.com/` | `hub.html` — menu "Escolha sua Cidade" |
+| `.../maraba` | `maraba.html` |
+| `.../ananindeua` | `ananindeua.html` |
+| `.../parauapebas` | `parauapebas.html` |
 
-O hub (`hub.html`, menu "Escolha sua Cidade") é servido na raiz de
-qualquer domínio que não tenha regra própria.
+O hub é servido na raiz de qualquer domínio que não tenha regra própria,
+pela última regra de `rewrites` no `vercel.json`.
+
+Preferimos um domínio só a um subdomínio por cidade porque o código nunca
+foi o custo — o DNS é. Cada subdomínio novo exige CNAME, verificação por
+TXT e convive com o bug da Hostinger descrito abaixo. Com um domínio,
+esse custo se paga uma vez, e abrir uma cidade nova vira apenas criar
+mais um arquivo HTML.
+
+### Subdomínio por cidade (legado)
+
+`jjmaraba.agenciadnegocios.com` foi configurado antes dessa decisão e
+continua ativo, servindo `maraba.html` na raiz. As regras por host para
+Ananindeua e Parauapebas seguem no `vercel.json` mas **não têm DNS** —
+funcionam no dia em que alguém apontar esses subdomínios.
 
 ## Arquivos
 
@@ -24,7 +37,7 @@ qualquer domínio que não tenha regra própria.
     ananindeua.html     >  mesmo template, dados de loja diferentes
     parauapebas.html   /
     style.css          estilos de TODAS as páginas (as 3 usam as mesmas 33 classes)
-    vercel.json        regras de subdomínio
+    vercel.json        cleanUrls + regras de host
     Logo_branca_com_traco_fundo_transparente.png   logo compartilhada
 
 Repositório único de propósito: as três cidades compartilham 100% do CSS e
