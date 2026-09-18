@@ -75,3 +75,14 @@ quebra silenciosamente os três subdomínios de uma vez.
 Pelo mesmo motivo, o botão "Voltar ao Menu Principal" aponta para
 `/hub.html` e não para `/` — num subdomínio de cidade, `/` cairia na
 própria cidade.
+
+### URLs sem `.html`
+
+`cleanUrls: true` no `vercel.json` serve as páginas sem extensão: `/maraba`
+em vez de `/maraba.html`. Links antigos com `.html` continuam funcionando —
+a Vercel responde 308 para a versão limpa.
+
+Por isso os `destination` dos rewrites **não levam `.html`**. Se levassem,
+o redirect 308 dispararia dentro do rewrite e o visitante de
+`jjmaraba.agenciadnegocios.com/` seria jogado para `/maraba`, perdendo a
+URL limpa na raiz — o oposto do objetivo.
