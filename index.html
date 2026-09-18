@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JJ Moto Peças - 19 Anos</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Background Animado -->
+    <div class="bg-particles">
+        <div class="particle p1"></div>
+        <div class="particle p2"></div>
+        <div class="particle p3"></div>
+    </div>
+
+    <div class="page-wrapper">
+        <header class="main-header tilt-card">
+            <div class="logo-container">
+                <img src="jj_moto_pecas_sem_confetes_inferiores (1) 1.png" alt="JJ Moto Peças Logo" class="logo">
+            </div>
+        </header>
+
+        <main class="grid-container">
+            <!-- Promoções em Destaque -->
+            <a href="https://jjmotopecas.com.br/ofertas/" class="action-card featured-card tilt-card" target="_blank" rel="noopener noreferrer">
+                <div class="card-bg"></div>
+                <div class="card-content">
+                    <div class="icon-circle pulse-glow">
+                        <i class="fas fa-tags"></i>
+                    </div>
+                    <div class="card-text">
+                        <h3>Ofertas & Promoções</h3>
+                        <p>Confira nossos descontos especiais de aniversário!</p>
+                    </div>
+                    <i class="fas fa-chevron-right arrow-icon"></i>
+                </div>
+            </a>
+
+            <!-- Acesso ao Site -->
+            <a href="https://jjmotopecas.com.br/" class="action-card tilt-card" target="_blank" rel="noopener noreferrer">
+                <div class="card-bg"></div>
+                <div class="card-content">
+                    <div class="icon-circle brand-blue">
+                        <i class="fas fa-globe"></i>
+                    </div>
+                    <div class="card-text">
+                        <h3>Acesse nosso Site</h3>
+                        <p>Catálogo completo de peças e acessórios</p>
+                    </div>
+                    <i class="fas fa-chevron-right arrow-icon"></i>
+                </div>
+            </a>
+
+            <!-- Menu de Cidades -->
+            <h2 class="section-title" style="text-align: center; margin-top: 15px; font-size: 1.2rem;">Escolha sua Cidade</h2>
+            
+            <a href="maraba.html" class="action-card tilt-card">
+                <div class="card-bg"></div>
+                <div class="card-content">
+                    <div class="icon-circle" style="background: linear-gradient(135deg, #111, #333);">
+                        <i class="fas fa-map-marker-alt" style="color: #ff4d4d;"></i>
+                    </div>
+                    <div class="card-text">
+                        <h3>Lojas em Marabá</h3>
+                        <p>Matriz, Cidade Nova e São Felix</p>
+                    </div>
+                    <i class="fas fa-chevron-right arrow-icon"></i>
+                </div>
+            </a>
+
+            <a href="parauapebas.html" class="action-card tilt-card">
+                <div class="card-bg"></div>
+                <div class="card-content">
+                    <div class="icon-circle" style="background: linear-gradient(135deg, #111, #333);">
+                        <i class="fas fa-map-marker-alt" style="color: #ff4d4d;"></i>
+                    </div>
+                    <div class="card-text">
+                        <h3>Lojas em Parauapebas</h3>
+                        <p>Rio Verde e Cidade Jardim</p>
+                    </div>
+                    <i class="fas fa-chevron-right arrow-icon"></i>
+                </div>
+            </a>
+
+            <a href="ananindeua.html" class="action-card tilt-card">
+                <div class="card-bg"></div>
+                <div class="card-content">
+                    <div class="icon-circle" style="background: linear-gradient(135deg, #111, #333);">
+                        <i class="fas fa-map-marker-alt" style="color: #ff4d4d;"></i>
+                    </div>
+                    <div class="card-text">
+                        <h3>Loja em Ananindeua</h3>
+                        <p>Águas Lindas (BR-316)</p>
+                    </div>
+                    <i class="fas fa-chevron-right arrow-icon"></i>
+                </div>
+            </a>
+        </main>
+    </div>
+
+    <script>
+        // Efeito 3D (Tilt) Individual para cada Card
+        const cards = document.querySelectorAll('.tilt-card');
+
+        cards.forEach(card => {
+            card.addEventListener('mousemove', (e) => {
+                const rect = card.getBoundingClientRect();
+                const x = e.clientX - rect.left; // x position within the element.
+                const y = e.clientY - rect.top;  // y position within the element.
+                
+                const centerX = rect.width / 2;
+                const centerY = rect.height / 2;
+                
+                const rotateX = ((y - centerY) / centerY) * -10; // Max rotation 10deg
+                const rotateY = ((x - centerX) / centerX) * 10;
+                
+                card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale3d(1.02, 1.02, 1.02)`;
+                
+                // Mover elementos internos para dar profundidade
+                const content = card.querySelector('.card-content') || card.querySelector('.anniversary-badge');
+                if(content) content.style.transform = 'translateZ(30px)';
+            });
+
+            card.addEventListener('mouseleave', () => {
+                card.style.transform = `perspective(1000px) rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1)`;
+                const content = card.querySelector('.card-content') || card.querySelector('.anniversary-badge');
+                if(content) content.style.transform = 'translateZ(0px)';
+            });
+        });
+    </script>
+</body>
+</html>

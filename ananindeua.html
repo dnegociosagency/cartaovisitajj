@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JJ Moto Peças - Ananindeua</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="bg-particles">
+        <div class="particle p1"></div>
+        <div class="particle p2"></div>
+        <div class="particle p3"></div>
+    </div>
+
+    <div class="page-wrapper">
+        <a href="index.html" class="back-btn"><i class="fas fa-arrow-left"></i> Voltar ao Menu Principal</a>
+
+        <header class="main-header tilt-card" style="margin-bottom: 20px;">
+            <div class="logo-container" style="width: 120px;">
+                <img src="jj_moto_pecas_sem_confetes_inferiores (1) 1.png" alt="JJ Moto Peças Logo" class="logo">
+            </div>
+            <div class="anniversary-badge">
+                <i class="fas fa-map-marker-alt" style="color: var(--primary-color);"></i> 
+                <span>Loja em Ananindeua</span>
+            </div>
+        </header>
+
+        <main>
+            <!-- Unidade Ananindeua -->
+            <div class="unit-card tilt-card">
+                <div class="unit-header">
+                    <h3>Unidade Ananindeua</h3>
+                    <p>BR-316, 4900 - Águas Lindas<br>Ananindeua - PA</p>
+                </div>
+                <div class="unit-actions">
+                    <a href="tel:091999999999" class="action-btn btn-phone">
+                        <i class="fas fa-phone-alt"></i> Telefone
+                    </a>
+                    <a href="https://wa.me/5591999999999" class="action-btn btn-whatsapp" target="_blank">
+                        <i class="fab fa-whatsapp"></i> WhatsApp
+                    </a>
+                    <a href="https://maps.google.com/?q=JJ+Moto+Pecas+Ananindeua" class="action-btn btn-maps" target="_blank">
+                        <i class="fas fa-map-marker-alt"></i> Como Chegar
+                    </a>
+                </div>
+            </div>
+
+            <!-- Redes Sociais da Cidade -->
+            <div class="city-socials tilt-card">
+                <a href="#" class="social-icon icon-fb" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                <a href="https://www.instagram.com/jjmotopecasananindeua/" class="social-icon icon-ig" target="_blank"><i class="fab fa-instagram"></i></a>
+                <a href="#" class="social-icon icon-tk" target="_blank"><i class="fab fa-tiktok"></i></a>
+            </div>
+        </main>
+    </div>
+
+    <script>
+        const cards = document.querySelectorAll('.tilt-card');
+        cards.forEach(card => {
+            card.addEventListener('mousemove', (e) => {
+                const rect = card.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+                const centerX = rect.width / 2;
+                const centerY = rect.height / 2;
+                const rotateX = ((y - centerY) / centerY) * -5;
+                const rotateY = ((x - centerX) / centerX) * 5;
+                
+                card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale3d(1.02, 1.02, 1.02)`;
+            });
+            card.addEventListener('mouseleave', () => {
+                card.style.transform = `perspective(1000px) rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1)`;
+            });
+        });
+    </script>
+</body>
+</html>
